@@ -17,21 +17,19 @@ function FlightsApp() {
 	};
 
 	const [flights, setFlights] = useState([]);
-	const [displayedFlights, setDisplayedFlights] = useState([]);
 
 	useEffect(() => {
 		getAllFlights().then(data => {
 			setFlights(data.flights);
-			setDisplayedFlights(data.flights);
 			});
 	}, []);
 
-	const allFlights = displayedFlights.map((flight) => <Flight key={flight.id} flight={flight} />);
+	
 
 	return (
 	<div>
 
-		{allFlights}
+		{flights.map((flight) => <Flight key={flight.id} flight={flight} />)}
 		
 	</div>
 	);
