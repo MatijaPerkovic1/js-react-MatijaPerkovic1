@@ -26,13 +26,32 @@ function FlightsApp() {
 			});
 	}, []);
 
+	function filterFlights(flight, option, filterText) {
+		const flightArrivalAndDeparture = flight.name.split('-');
+		if(option === 1) { //filter by arrival
+			if(flightArrivalAndDeparture[1].includes(filterText)) return flight;
+		} else { //filter by departure
+			if(flightArrivalAndDeparture[0].includes(filterText)) return flight;
+		}
+	}
+
+
+	function onArrivalInputChange(e) {
+		setDisplayedFlights(displayedFlights.filter((flight) => filterFlights(flight, 1, e.target.value)));
+	}
+
+	function onDepartureInputChange(e){
+		setDisplayedFlights(displayedFlights.filter((flight) => filterFlights(flight, 0, e.target.value)));
+	}
+
+
 	const allFlights = displayedFlights.map((flight) => <Flight key={flight.id} flight={flight} />);
 
 	return (
 	<div>
-
+		Search by arrival: <input onChange={onArrivalInputChange} type="text" name="arrival"/> <br />
+		<br/>Search by departure: <input onChange={onDepartureInputChange} type="text" name="departure" on/>
 		{allFlights}
-		
 	</div>
 	);
 }
