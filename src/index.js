@@ -16,6 +16,7 @@ function FlightsApp() {
 		return data;
 	};
 
+	const [loading, setLoading] = useState(true);
 	const [flights, setFlights] = useState([]);
 	const [displayedFlights, setDisplayedFlights] = useState([]);
 
@@ -23,6 +24,7 @@ function FlightsApp() {
 		getAllFlights().then(data => {
 			setFlights(data.flights);
 			setDisplayedFlights(data.flights);
+			setLoading(false);
 			});
 	}, []);
 
@@ -31,6 +33,7 @@ function FlightsApp() {
 	return (
 	<div>
 
+		{loading && <p>Loading...</p>}
 		{allFlights}
 		
 	</div>
