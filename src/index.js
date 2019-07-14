@@ -1,12 +1,16 @@
-import React from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import ReactDOM from 'react-dom';
+import React from 'react';
+import FlightsApp from './flightsapp.js';
 
-function HelloWorld() {
-  return (
-    <div>
-      <h1>Hello world!</h1>
-    </div>
-  );
+function App() {
+	return (
+	<div>
+		<Router>
+			<Route exact path="/" component={FlightsApp} />
+		</Router>
+	</div>
+	);
 }
 
-ReactDOM.render(<HelloWorld />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
