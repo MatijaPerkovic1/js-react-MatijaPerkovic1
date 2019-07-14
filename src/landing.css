@@ -1,0 +1,102 @@
+* {
+	margin: 0;
+}
+.wrapper {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-auto-rows: 300px;
+	padding: 20px;
+}
+#navbar {
+	width: 100%;
+	height: 80px;
+	background-color: #0369f9;
+}
+#buttons {
+	float: right;
+	padding: 20px;
+}
+#buttons button {
+	margin: 5px;
+	padding: 3px;
+	width: 80px;
+	border-radius: 3px;
+	border-style: none;
+	background-color: white;
+}
+#search {
+	height: 200px;
+	background-color: #f0f0f0;
+	position: relative;
+	text-align: center;
+}
+.title {
+	color: #194cbf;
+	font-family: 'PT Serif', serif;
+	letter-spacing: 2px;
+}
+#search h2 {
+	position: relative;
+	top: 35%;
+}
+#searchoptions {
+	position: relative;
+	top: 55%;
+	width: 80%;
+	margin: 0 auto;
+}
+#search select, input {
+	height: 40px;
+	border-style: none;
+	margin: 1px;
+	width: 20%;
+	padding: 0px;
+	text-align: center;
+	text-align-last: center;
+}
+
+#search button {
+	height: 40px;
+	background-color: #0369f9;
+	color: white;
+	width: 100px;
+	border-style: none;
+}
+#results {
+	height: 70px;
+	margin-top: 50px;
+	margin-left: 10px;
+	font-size: 1.5em;
+	font-family: sans-serif;
+	opacity: 0.8;
+}
+.item img {
+	width: 80%;
+	height: 300px;
+}
+#item-info > * {
+	padding: 10px;
+}
+#item-info div {
+	display: inline-block;
+	padding: 5px;
+}
+.checked {
+  color: orange;
+  margin: 2px;
+}
+#price {
+	color: #0369f9;
+	font-weight: 900;
+}
+p, pre, span, a {
+	font-family: sans-serif;
+}
+
+#main {
+	position: relative;
+}
+#tickets {
+	opacity: 0.55;
+	display: inline-block;
+}
