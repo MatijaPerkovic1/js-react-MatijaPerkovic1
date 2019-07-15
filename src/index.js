@@ -16,6 +16,7 @@ function FlightsApp() {
 		return data;
 	};
 
+	const [loading, setLoading] = useState(true);
 	const [flights, setFlights] = useState([]);
 	const [filter, setFilter] = useState("");
 
