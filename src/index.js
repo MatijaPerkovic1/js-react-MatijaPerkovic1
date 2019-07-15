@@ -17,6 +17,7 @@ function FlightsApp() {
 	};
 
 	const [flights, setFlights] = useState([]);
+	const [filter, setFilter] = useState("");
 
 	useEffect(() => {
 		getAllFlights().then(data => {
@@ -24,13 +25,14 @@ function FlightsApp() {
 			});
 	}, []);
 
-	
+	function onInputChange(e) {
+		setFilter(e.target.value);
+	}
 
 	return (
 	<div>
-
-		{flights.map((flight) => <Flight key={flight.id} flight={flight} />)}
-		
+		Search: <input onChange={onInputChange} value={filter} type="text" name="arrival"/> <br />
+		{flights.filter((flight) => flight.name.includes(filter)).map((flight) => <Flight key={flight.id} flight={flight} />)}
 	</div>
 	);
 }
