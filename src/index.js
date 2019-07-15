@@ -18,24 +18,22 @@ function FlightsApp() {
 
 	const [loading, setLoading] = useState(true);
 	const [flights, setFlights] = useState([]);
-	const [displayedFlights, setDisplayedFlights] = useState([]);
+	const [filter, setFilter] = useState("");
 
 	useEffect(() => {
 		getAllFlights().then(data => {
 			setFlights(data.flights);
-			setDisplayedFlights(data.flights);
-			setLoading(false);
 			});
 	}, []);
 
-	const allFlights = displayedFlights.map((flight) => <Flight key={flight.id} flight={flight} />);
+	function onInputChange(e) {
+		setFilter(e.target.value);
+	}
 
 	return (
 	<div>
-
-		{loading && <p>Loading...</p>}
-		{allFlights}
-		
+		Search: <input onChange={onInputChange} value={filter} type="text" name="arrival"/> <br />
+		{flights.filter((flight) => flight.name.includes(filter)).map((flight) => <Flight key={flight.id} flight={flight} />)}
 	</div>
 	);
 }
