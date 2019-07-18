@@ -16,7 +16,7 @@ export function FlightDetails(props) {
 					<p>Company:</p>
 					<p>{flight && flight.company_name}</p>
 					<p>Departs at:</p>
-					<p>{flight && flight.flys_at}</p>
+					<p>{flight && new Date(flight.flys_at).toDateString()}</p>
 					<p>Base price:</p>
 					<p>{flight && flight.base_price}$</p>
 				</div>
@@ -24,7 +24,7 @@ export function FlightDetails(props) {
 					<p>Available seats:</p>
 					<p>{flight && flight.no_of_seats - flight.no_of_booked_seats}</p>
 					<p>Lands at:</p>
-					<p>{flight && flight.lands_at}</p>
+					<p>{flight && new Date(flight.lands_at).toDateString()}</p>
 					<p>Current price:</p>
 					<p>{flight && flight.current_price}$</p>
 				</div>

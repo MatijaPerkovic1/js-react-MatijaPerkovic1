@@ -10,9 +10,8 @@ import { loadFlights } from '../services/flights';
 import { Navbar } from '../components/Navbar';
 
 function FlightsAppContainer() {
-
-	useAsync(loadFlights.bind(null, appState));
 	localStorage.getItem('token') ? (appState.isLoggedIn = true) : (appState.isLoggedIn = false);
+	useAsync(loadFlights.bind(null, appState));
 	function onFilterChange(e) {
 		setFilter(e.target.value);
 	}
