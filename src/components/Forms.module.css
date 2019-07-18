@@ -1,0 +1,72 @@
+input[type="checkbox"] {
+	height: unset;
+	width: unset;
+	color: white;
+	margin-right: 8px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.passwordError {
+	background-color: #eb6060;
+}
+.errorMessage {
+	color: #eb6060;
+}
+#formContainer {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+.formInput {
+	border-bottom: 1px solid #c4c4c4;
+	text-align-last: left;
+	width: 80%;
+	height: unset;
+	font-size: 1.1em;
+	margin: 20px;
+}
+*:focus {
+	outline: none;
+	text-align: left;
+}
+#formButton {
+	margin-top: 20px;
+	width: 60%;
+	height: 35px;
+	border-radius: 5px;
+	font-size: 1.1em;
+	background-color: #0369f9;
+	color: white;
+	border: none;
+}
+#formButton:disabled {
+	opacity: 0.6;
+}
+#form {
+	width: 300px;
+	text-align: center;
+	position: relative;
+	margin: 0 auto;
+	margin-top: 20%;
+
+}
+#form p, a {
+	padding: 10px;
+	font-size: 1.4em;
+}
+#form p {
+	margin-top: 15px;
+}
+#form a {
+	color: #0369f9;
+	text-decoration: none;
+	font-weight: bolder;
+}
+#form h2 {
+	margin-bottom: 50px;
+}
+.title {
+	color: #194cbf;
+	font-family: 'PT Serif', serif;
+	letter-spacing: 2px;
+}

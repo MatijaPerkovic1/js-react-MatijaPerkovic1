@@ -1,0 +1,63 @@
+.title {
+	color: #194cbf;
+	font-family: 'PT Serif', serif;
+	letter-spacing: 2px;
+	margin-bottom: 40px;
+}
+#info div p:nth-of-type(odd){
+	font-size: 1.1em;
+}
+#info div p:nth-of-type(even){
+	opacity: 0.5;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	padding-left: 10px;
+}
+#info div {
+	display: inline-block;
+}
+#info {
+	padding: 30px;
+	margin: auto;
+	width: 40%;
+	display: inline-block;
+	height: 300px;
+	position: relative;
+}
+#imgInfo img {
+	height: 300px;
+	width: 50%;
+	display: inline-block;
+}
+#detailsButton {
+	margin-top: 80px;
+	width: 200px;
+	height: 35px;
+	border-radius: 5px;
+	font-size: 1.1em;
+	background-color: #0369f9;
+	color: white;
+	border: none;
+	display: block;
+}
+#amenities {
+	display: block;
+}
+#amenities i {
+	width: 200px;
+	padding: 20px;
+	opacity: 0.5;
+}
+#amenities div {
+	display: block;
+}
+#amenities i p {
+	display: inline-block;
+	font-weight: 100;
+	padding-left: 15px;
+}
+#imgInfo{
+	width: 50%;
+	display: inline-block;
+	margin-top: 50px;
+}

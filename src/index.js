@@ -1,38 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import ReactDOM from 'react-dom';
-import Flight from './flight.js';
+import React from 'react';
+import { FlightsApp } from './containers/FlightsApp';
+import Login from './components/Login';
+import Register from './components/Register';
+import { FlightDetails } from './components/FlightDetails';
 
-function FlightsApp() {
-
-	async function getAllFlights() {
-		const response = await fetch('https://flighter-hw7.herokuapp.com/api/flights', {
-        	headers: {
-	        	'Authorization': 'FoQZftPkvXppHhf3tbTpHr6Z',
-	        	'Accept': 'application/json',
-	            'Content-Type': 'application/json'  
-        	}
-        });
-		const data = response.json();
-		return data;
-	};
-
-	const [flights, setFlights] = useState([]);
-
-	useEffect(() => {
-		getAllFlights().then(data => {
-			setFlights(data.flights);
-			});
-	}, []);
-
-	
-
+function App() {
 	return (
 	<div>
-
-		{flights.map((flight) => <Flight key={flight.id} flight={flight} />)}
-		
+		<Router>
+			<Route path={`/flights/:id`} component={FlightDetails} />
+			<Route exact path="/" component={FlightsApp} />
+			<Route path="/login" component={Login} />
+			<Route path="/register" component={Register} />
+		</Router>
 	</div>
 	);
 }
 
-ReactDOM.render(<FlightsApp />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
