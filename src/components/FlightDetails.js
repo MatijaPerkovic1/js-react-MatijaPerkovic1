@@ -3,10 +3,11 @@ import { getFlight } from '../services/getFlight';
 import { useAsync } from 'react-use';
 import styles from './FlightDetails.module.css';
 import { Navbar } from '../components/Navbar';
+import { observer } from 'mobx-react';
 
 
-export function FlightDetails(props) {
-	const {value: flight} = useAsync(getFlight.bind(null, props.location.pathname))
+function FlightDetailsComponent(props) {
+	const {value: flight} = useAsync(getFlight.bind(null, props.match.params.id))
 	return(
 		<div id={styles.details}>
 			<Navbar />
@@ -48,3 +49,4 @@ export function FlightDetails(props) {
 		</div>
 	)
 }
+export const FlightDetails = observer(FlightDetailsComponent);

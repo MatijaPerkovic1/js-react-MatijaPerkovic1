@@ -1,13 +1,8 @@
-import { get } from './flighterApi';
+import { post } from './fligherApiPost.js';
 
 export function registerUser(email, fullName, password) {
-	const options = {
-		method: 'POST',
-        headers: {
-	        'Accept': 'application/json',
-	        'Content-Type': 'application/json'  
-        },
-        body: JSON.stringify({
+
+    const body = JSON.stringify({
         	"user": {
         		"email": email,
         		"first_name": fullName.split(" ")[0],
@@ -15,8 +10,7 @@ export function registerUser(email, fullName, password) {
         		"password": password
         	}
         })
-    };
-  	return get('users', options)
+  	return post('users', body)
     .then((res) => {
     	if(res.errors) alert(JSON.stringify(res.errors))
     });

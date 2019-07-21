@@ -1,12 +1,12 @@
 import React from 'react';
 import { appState } from '../state/AppState';
 import { Link, Redirect } from 'react-router-dom';
+import { observer } from 'mobx-react';
 import styles from '../containers/FlightsApp.module.css';
 
-export function Navbar(){
+function NavbarComponent(){
 	const [redirect, setRedirect] = React.useState(false);
 	function handleLogOut() {
-		appState.isLoggedIn = false;
 		localStorage.removeItem('token');
 		appState.flights = [];
 		setRedirect(true);
@@ -22,3 +22,4 @@ export function Navbar(){
 		</div>
 	)
 }
+export const Navbar = observer(NavbarComponent);

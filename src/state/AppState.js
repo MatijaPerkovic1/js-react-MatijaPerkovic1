@@ -1,13 +1,15 @@
-import { observable, decorate } from 'mobx';
+import { observable, decorate, computed, autorun } from 'mobx';
 
 class AppState {
   flights = [];
-  isLoggedIn = false
+  get isLoggedIn() {
+  	return Boolean(localStorage.getItem('token'));
+  }
 }
 
 decorate(AppState, {
   flights: observable,
-  isLoggedIn: observable
+  isLoggedIn: computed
 });
 
 export const appState = new AppState();

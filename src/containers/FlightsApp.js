@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAsync } from 'react-use';
-import Flight from '../components/Flight';
-import Login from '../components/Login';
+import { Flight } from '../components/Flight';
+import { Login } from '../components/Login';
 import styles from './FlightsApp.module.css';
 import { appState } from '../state/AppState';
 import { observer } from 'mobx-react';
@@ -10,7 +10,6 @@ import { loadFlights } from '../services/flights';
 import { Navbar } from '../components/Navbar';
 
 function FlightsAppContainer() {
-	localStorage.getItem('token') ? (appState.isLoggedIn = true) : (appState.isLoggedIn = false);
 	useAsync(loadFlights.bind(null, appState));
 	function onFilterChange(e) {
 		setFilter(e.target.value);
@@ -19,7 +18,7 @@ function FlightsAppContainer() {
 
 	return (
 	<div>
-		<div id ={styles.main}>
+		<div id={styles.main}>
 			<Navbar />
 			<div id={styles.search}>
 				<h2 className={styles.title}>Find best flight for you and your friends!</h2>

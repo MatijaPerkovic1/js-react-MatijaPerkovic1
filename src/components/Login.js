@@ -1,16 +1,17 @@
 import React from 'react';
 import styles from './Forms.module.css';
 import { Link, Redirect } from 'react-router-dom';
+import { observer } from 'mobx-react';
+import { useAsync } from 'react-use';
 import { loginUser } from '../services/login';
 import { loadFlights } from '../services/flights';
-import { appState } from '../state/AppState';
-export default function Login() {
+
+function LoginComponent() {
 	const [ username, setUsername ] = React.useState("");
 	const [ password, setPassword ] = React.useState("");
 	const [ redirect, setRedirect ] = React.useState(false);
 	function handleLoginClick() {
 		loginUser(username, password);
-		loadFlights.bind(null, appState);
 		setRedirect(true);
 	}
 	function handleUsernameChange (e) {
@@ -36,3 +37,4 @@ export default function Login() {
 		</div>
 	)
 }
+export const Login = observer(LoginComponent);

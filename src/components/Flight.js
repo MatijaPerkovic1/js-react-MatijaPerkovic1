@@ -3,8 +3,9 @@ import { useLocalStorage } from 'react-use';
 import styles from '../containers/FlightsApp.module.css';
 import { Link } from 'react-router-dom';
 import { FlightDetails } from './FlightDetails';
+import { observer } from 'mobx-react';
 
-function Flight(props) {
+function FlightComponent(props) {
 
 	const [bookedSeats, setBookedSeats] = useState(props.flight.no_of_booked_seats);
 	const [currentPrice, setCurrentPrice] = useState(props.flight.current_price);
@@ -36,4 +37,4 @@ function Flight(props) {
 	)
 }
 
-export default Flight;
+export const Flight = observer(FlightComponent);

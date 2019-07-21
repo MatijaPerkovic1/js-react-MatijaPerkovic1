@@ -2,8 +2,9 @@ import React from 'react';
 import { registerUser } from '../services/register';
 import styles from './Forms.module.css';
 import { Redirect } from 'react-router-dom';
+import { observer } from 'mobx-react';
 
-export default function Register() {
+function RegisterComponent() {
 
 	const [ fullName, setFullName] = React.useState("");
 	const [ redirect, setRedirect ] = React.useState(false);
@@ -47,3 +48,4 @@ export default function Register() {
 		</div>
 	)
 }
+export const Register = observer(RegisterComponent);

@@ -1,12 +1,5 @@
-import { get } from './flighterApi';
-const options = {
-	headers: {
-		'Authorization': localStorage.getItem('token'),
-		'Accept': 'application/json',
-		'Content-Type': 'application/json'
-	}
-}
-export function getFlight(uri) {
-  return get(uri, options)
+import { get } from './flighterApiGet';
+export function getFlight(id) {
+  return get(`flights/${id}`)
     .then((response) => response.flight)
 }
