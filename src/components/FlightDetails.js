@@ -7,7 +7,13 @@ import { observer } from 'mobx-react';
 
 
 function FlightDetailsComponent(props) {
-	const {value: flight} = useAsync(getFlight.bind(null, props.match.params.id))
+
+	function CreateBooking(){
+		props.history.push(`/flights/${props.match.params.id}/book`);
+	}
+
+	const {value: flight} = useAsync(getFlight.bind(null, props.match.params.id));
+
 	return(
 		<div id={styles.details}>
 			<Navbar />
@@ -29,7 +35,7 @@ function FlightDetailsComponent(props) {
 					<p>Current price:</p>
 					<p>{flight && flight.current_price}$</p>
 				</div>
-				<button id={styles.detailsButton}>
+				<button id={styles.detailsButton} onClick={CreateBooking}>
 						Book now
 				</button>
 			</div>

@@ -4,12 +4,14 @@ import { useAsync } from 'react-use';
 import { Flight } from '../components/Flight';
 import { Login } from '../components/Login';
 import styles from './FlightsApp.module.css';
-import { appState } from '../state/AppState';
+import { AppContext } from '../state/AppContext';
 import { observer } from 'mobx-react';
 import { loadFlights } from '../services/flights';
 import { Navbar } from '../components/Navbar';
 
 function FlightsAppContainer() {
+	const { appState } = React.useContext(AppContext);
+	
 	useAsync(loadFlights.bind(null, appState));
 	function onFilterChange(e) {
 		setFilter(e.target.value);

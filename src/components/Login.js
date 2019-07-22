@@ -2,11 +2,10 @@ import React from 'react';
 import styles from './Forms.module.css';
 import { Link, Redirect } from 'react-router-dom';
 import { observer } from 'mobx-react';
-import { useAsync } from 'react-use';
 import { loginUser } from '../services/login';
 import { loadFlights } from '../services/flights';
 
-function LoginComponent() {
+function LoginComponent(props) {
 	const [ username, setUsername ] = React.useState("");
 	const [ password, setPassword ] = React.useState("");
 	const [ redirect, setRedirect ] = React.useState(false);

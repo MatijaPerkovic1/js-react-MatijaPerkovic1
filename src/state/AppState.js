@@ -6,10 +6,8 @@ class AppState {
   	return Boolean(localStorage.getItem('token'));
   }
 }
-
 decorate(AppState, {
   flights: observable,
   isLoggedIn: computed
 });
-
 export const appState = new AppState();

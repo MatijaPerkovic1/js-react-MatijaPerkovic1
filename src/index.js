@@ -1,10 +1,14 @@
 import { BrowserRouter as Router, Route, Redirect, Link } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import React from 'react';
+import { useAsync } from 'react-use';
+import { Provider } from 'mobx-react';
 import { FlightsApp } from './containers/FlightsApp';
 import { Login } from './components/Login';
 import { Register } from './components/Register';
 import { FlightDetails } from './components/FlightDetails';
+import { appState } from './state/AppState';
+import { CreateBooking } from './components/CreateBooking';
 
 function PrivateRoute({ isLoggedIn, Component, ...rest }) {
   function render(props) {
@@ -18,12 +22,15 @@ function App() {
 	const LoggedIn = localStorage.getItem('token') ? true : false;
 	return (
 	<div>
-		<Router>
-			<PrivateRoute isLoggedIn={LoggedIn} path={`/flights/:id`} Component={FlightDetails} />
-			<Route exact path="/" component={FlightsApp} />
-			<Route path="/login" component={Login} />
-			<Route path="/register" component={Register} />
-		</Router>
+		<Provider appState={appState}>
+			<Router>
+				<PrivateRoute isLoggedIn={LoggedIn} path={`/flights/:id`} Component={FlightDetails} />
+				<Route exact path="/" component={FlightsApp} />
+				<Route path="/login" component={Login}/>
+				<Route path="/register" component={Register} />
+				<Route path="/flights/:id/book" component={CreateBooking} />
+			</Router>
+		</Provider>
 	</div>
 	);
 }

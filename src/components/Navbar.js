@@ -1,10 +1,12 @@
 import React from 'react';
-import { appState } from '../state/AppState';
+import { AppContext } from '../state/AppContext';
 import { Link, Redirect } from 'react-router-dom';
 import { observer } from 'mobx-react';
 import styles from '../containers/FlightsApp.module.css';
 
 function NavbarComponent(){
+	const { appState } = React.useContext(AppContext);
+
 	const [redirect, setRedirect] = React.useState(false);
 	function handleLogOut() {
 		localStorage.removeItem('token');
