@@ -12,7 +12,7 @@ import { Navbar } from '../components/Navbar';
 function FlightsAppContainer() {
 	const { appState } = React.useContext(AppContext);
 	
-	useAsync(loadFlights.bind(null, appState));
+	useAsync(loadFlights.bind(null, appState), [appState.token]);
 	function onFilterChange(e) {
 		setFilter(e.target.value);
 	}

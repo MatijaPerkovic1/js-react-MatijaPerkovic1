@@ -1,26 +1,25 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import styles from './CreateBooking.module.css';
-import { bookFlight } from '../services/book';
+
 import { Redirect } from 'react-router-dom';
 
 function CreateBookingComponent(props) {
 
-	const [redirect, setRedirect] = React.useState(false);
-
+	const [noOfSeats, setNoOfSeats] = React.useState(1);
+	function handleSelectChange(e){
+		setNoOfSeats(e.target.value);
+	}
 	function handleConfirmClick() {
 		const selectElement = document.querySelector('select');
-		const noOfSeats = selectElement.options[selectElement.selectedIndex].value;
-		bookFlight(noOfSeats, props.match.params.id);
-		setRedirect(true);
+		props.createBooking(props, noOfSeats, props.match.params.id);
 	}
 	return(
 		<div id={styles.bookingContainer}>
-			{redirect && <Redirect to="/" />}
 			<div id={styles.bookingContent}>
 				<h2 id={styles.bookingTitle}>Create booking</h2>
 				<p id={styles.noOfPassengersText}>Number of passengers</p>
-				<select>
+				<select onChange={handleSelectChange}>
 					<option value={1}>1</option>
 					<option value={2}>2</option>
 					<option value={3}>3</option>

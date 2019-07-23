@@ -10,6 +10,7 @@ function NavbarComponent(){
 	const [redirect, setRedirect] = React.useState(false);
 	function handleLogOut() {
 		localStorage.removeItem('token');
+		appState.token = '';
 		appState.flights = [];
 		setRedirect(true);
 	}

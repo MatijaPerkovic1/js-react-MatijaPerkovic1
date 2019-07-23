@@ -6,9 +6,9 @@ import { Navbar } from '../components/Navbar';
 import { observer } from 'mobx-react';
 
 
-function FlightDetailsComponent(props) {
+function FlightDetailsContainer(props) {
 
-	function CreateBooking(){
+	function createBooking(){
 		props.history.push(`/flights/${props.match.params.id}/book`);
 	}
 
@@ -35,7 +35,7 @@ function FlightDetailsComponent(props) {
 					<p>Current price:</p>
 					<p>{flight && flight.current_price}$</p>
 				</div>
-				<button id={styles.detailsButton} onClick={CreateBooking}>
+				<button id={styles.detailsButton} onClick={createBooking}>
 						Book now
 				</button>
 			</div>
@@ -55,4 +55,4 @@ function FlightDetailsComponent(props) {
 		</div>
 	)
 }
-export const FlightDetails = observer(FlightDetailsComponent);
+export const FlightDetails = observer(FlightDetailsContainer);

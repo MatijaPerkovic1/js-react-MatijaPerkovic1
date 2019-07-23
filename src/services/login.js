@@ -10,7 +10,8 @@ export function loginUser(username, password) {
   return post('session', body)
   	.then((response) => {
   		if(response.session) {
-  			localStorage.setItem('token', response.session.token);
+			  localStorage.setItem('token', response.session.token);
+			  appState.token = response.session.token;
   		} else {
   			alert(JSON.stringify(response.errors))
   		}

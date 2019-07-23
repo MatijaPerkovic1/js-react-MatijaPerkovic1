@@ -8,6 +8,7 @@ import { Login } from './components/Login';
 import { Register } from './components/Register';
 import { FlightDetails } from './components/FlightDetails';
 import { appState } from './state/AppState';
+import { bookFlight } from './services/book';
 import { CreateBooking } from './components/CreateBooking';
 
 function PrivateRoute({ isLoggedIn, Component, ...rest }) {
@@ -16,6 +17,10 @@ function PrivateRoute({ isLoggedIn, Component, ...rest }) {
   }
 
   return <Route {...rest} component={render} />;
+}
+function createBooking(props, noOfSeats, flightId){
+	props.history.push('/');
+	bookFlight(noOfSeats, flightId);
 }
 
 function App() {
@@ -28,7 +33,7 @@ function App() {
 				<Route exact path="/" component={FlightsApp} />
 				<Route path="/login" component={Login}/>
 				<Route path="/register" component={Register} />
-				<Route path="/flights/:id/book" component={CreateBooking} />
+				<Route path="/flights/:id/book" render={(props) => <CreateBooking {...props} createBooking={createBooking} />} />
 			</Router>
 		</Provider>
 	</div>
