@@ -3,36 +3,36 @@ import styles from './Forms.module.css';
 import { Link, Redirect } from 'react-router-dom';
 import { observer } from 'mobx-react';
 import { loginUser } from '../services/login';
-import { loadFlights } from '../services/flights';
+import useForm from 'react-hook-form';
+
 
 function LoginComponent(props) {
-	const [ username, setUsername ] = React.useState("");
-	const [ password, setPassword ] = React.useState("");
-	const [ redirect, setRedirect ] = React.useState(false);
-	function handleLoginClick() {
-		loginUser(username, password);
-		setRedirect(true);
-	}
-	function handleUsernameChange (e) {
-		setUsername(e.target.value);
-	}
-	function handlePasswordChange (e) {
-		setPassword(e.target.value);
+	const { register, handleSubmit, errors} = useForm();
+	function handleLoginClick(data) {
+		props.onLogin(props, data.username, data.password);
 	}
 	return(
 		<div id={styles.formContainer}>
-			{redirect && <Redirect to="/" />}
-			<div id={styles.form}>
+			<form id={styles.form} onSubmit={handleSubmit(handleLoginClick)}>
 				<h2 className={styles.title}>Login</h2>
-				<input className={styles.formInput} placeholder="Username" value={username} onChange={handleUsernameChange} /><br />
-				<input className={styles.formInput} type="password" placeholder="Password" value={password} onChange={handlePasswordChange} /><br />
+				<input 
+					className={styles.formInput} 
+					placeholder="Username" 
+					name="username"
+					ref={register} /><br />
+				<input 
+					className={styles.formInput} 
+					type="password" 
+					placeholder="Password" 
+					name="password"
+					ref={register} /><br />
 				<input type="checkbox" /><span>Remember me</span><br />
-				<button id={styles.formButton} onClick={handleLoginClick} disabled={!username || !password}>
+				<button id={styles.formButton}>
 					Login
 				</button>
 				<p>Don't have an account?</p>
 				<Link to="/register"><a href="">Register here</a></Link>
-			</div>
+			</form>
 		</div>
 	)
 }

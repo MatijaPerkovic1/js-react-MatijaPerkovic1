@@ -2,7 +2,7 @@ import React, { useState} from 'react';
 import { useLocalStorage } from 'react-use';
 import styles from '../containers/FlightsApp.module.css';
 import { Link } from 'react-router-dom';
-import { FlightDetails } from './FlightDetails';
+import { FlightDetails } from '../containers/FlightDetails';
 import { observer } from 'mobx-react';
 
 function FlightComponent(props) {

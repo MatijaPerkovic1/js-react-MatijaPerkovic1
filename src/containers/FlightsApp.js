@@ -7,16 +7,17 @@ import styles from './FlightsApp.module.css';
 import { AppContext } from '../state/AppContext';
 import { observer } from 'mobx-react';
 import { loadFlights } from '../services/flights';
+import { FlightList } from '../components/FlightList';
 import { Navbar } from '../components/Navbar';
 
 function FlightsAppContainer() {
 	const { appState } = React.useContext(AppContext);
 	
 	useAsync(loadFlights.bind(null, appState), [appState.token]);
+
 	function onFilterChange(e) {
-		setFilter(e.target.value);
+		appState.flightsFilter = e.target.value;
 	}
-	const [filter, setFilter] = useState("");
 
 	return (
 	<div>
@@ -28,7 +29,7 @@ function FlightsAppContainer() {
 				<select>
 					<option>01 FEB 2019</option>
 				</select>
-				<input onChange={onFilterChange} value={filter} type="text" name="arrival"/>
+				<input onChange={onFilterChange} value={appState.flightsFilter} type="text" name="arrival"/>
 				<select>
 					<option>4 PEOPLE</option>
 				</select>
@@ -38,7 +39,7 @@ function FlightsAppContainer() {
 			<p id={styles.results}>RESULTS</p>
 			<div className={styles.wrapper}>
 				{!appState.isLoggedIn && <p>LOG IN TO SEE AVAILABLE FLIGHTS!</p>}
-				{appState.flights && appState.flights.filter((flight) => flight.name.includes(filter)).map((flight) => <Flight key={flight.id} flight={flight} />)}
+				<FlightList flights={appState.filteredFlights} />
 			</div>
 		</div>
 	</div>
