@@ -1,6 +1,8 @@
 import React from 'react';
 import { getFlight } from '../services/getFlight';
 import { useAsync } from 'react-use';
+import { AppContext } from '../state/AppContext';
+import { Route } from 'react-router-dom';
 import styles from './FlightDetails.module.css';
 import { Navbar } from '../components/Navbar';
 import { observer } from 'mobx-react';
@@ -11,12 +13,22 @@ function FlightDetailsContainer(props) {
 	function createBooking(){
 		props.history.push(`/flights/${props.match.params.id}/book`);
 	}
+	const { appState } = React.useContext(AppContext);
 
-	const {value: flight} = useAsync(getFlight.bind(null, props.match.params.id));
+	const {value: flight, loading} = useAsync(getFlight.bind(null, props.match.params.id));
+
+	function onLogOut(props) {
+		localStorage.removeItem('token');
+		appState.token = '';
+		appState.flights = [];
+		props.history.push('/');
+	}
 
 	return(
 		<div id={styles.details}>
-			<Navbar />
+			<Route path="/"  render={(props) => <Navbar {...props} onLogOut={onLogOut} />}/>
+			{loading ? <p>Loading...</p> : 
+			<React.Fragment>
 			<div id={styles.info}>
 				<h2 className={styles.title}>{flight && flight.name}</h2>
 				<div>
@@ -52,6 +64,8 @@ function FlightDetailsContainer(props) {
 					</div>
 				</div>
 			</div>
+			</React.Fragment>
+			}
 		</div>
 	)
 }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 import { useAsync } from 'react-use';
 import { Flight } from '../components/Flight';
 import { Login } from '../components/Login';
@@ -18,11 +18,17 @@ function FlightsAppContainer() {
 	function onFilterChange(e) {
 		appState.flightsFilter = e.target.value;
 	}
+	function onLogOut(props) {
+		localStorage.removeItem('token');
+		appState.token = '';
+		appState.flights = [];
+		props.history.push('/');
+	}
 
 	return (
 	<div>
 		<div id={styles.main}>
-			<Navbar />
+			<Route path="/"  render={(props) => <Navbar {...props} onLogOut={onLogOut} />}/>
 			<div id={styles.search}>
 				<h2 className={styles.title}>Find best flight for you and your friends!</h2>
 				<div id={styles.searchoptions}>
@@ -39,7 +45,7 @@ function FlightsAppContainer() {
 			<p id={styles.results}>RESULTS</p>
 			<div className={styles.wrapper}>
 				{!appState.isLoggedIn && <p>LOG IN TO SEE AVAILABLE FLIGHTS!</p>}
-				<FlightList flights={appState.filteredFlights} />
+				{appState.isLoggedIn && <FlightList flights={appState.filteredFlights} />}
 			</div>
 		</div>
 	</div>

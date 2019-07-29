@@ -2,6 +2,9 @@ import { observable, decorate, computed, autorun } from 'mobx';
 
 class AppState {
   flights = [];
+  bookings = [];
+  username = "";
+  userId = localStorage.getItem('userId');
   flightsFilter = localStorage.getItem('flightsFilter') || '';
   get filteredFlights() {
     return this.flights.filter((flight) =>
@@ -14,7 +17,10 @@ class AppState {
   }
 }
 decorate(AppState, {
+  bookings: observable,
+  username: observable,
   flights: observable,
+  userId: observable,
   flightsFilter: observable,
   token: observable,
   filteredFlights: computed,

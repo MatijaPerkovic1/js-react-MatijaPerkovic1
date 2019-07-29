@@ -1,7 +1,6 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import styles from './CreateBooking.module.css';
-
 import { Redirect } from 'react-router-dom';
 
 function CreateBookingComponent(props) {
@@ -11,7 +10,6 @@ function CreateBookingComponent(props) {
 		setNoOfSeats(e.target.value);
 	}
 	function handleConfirmClick() {
-		const selectElement = document.querySelector('select');
 		props.createBooking(props, noOfSeats, props.match.params.id);
 	}
 	return(

@@ -1,0 +1,67 @@
+#editContainer {
+	background-color: rgba(0, 0, 0, 0.6);
+	height: 100%;
+	width: 100%;
+	text-align: center;
+	position: fixed;
+	top: 0;
+}
+#editContent {
+	height: 700px;
+	width: 600px;
+	background-color: white;
+	position: relative;
+	margin: 0 auto;
+	margin-top: 10%;
+}
+#editTitle {
+	color: #194cbf;
+	font-family: 'PT Serif', serif;
+	letter-spacing: 2px;
+	margin-bottom: 40px;
+	padding-top: 40px;
+}
+#saveButton {
+	width: 200px;
+	height: 35px;
+	margin: 20px auto;
+	border-radius: 5px;
+	font-size: 1.1em;
+	background-color: #0369f9;
+	color: white;
+	border: none;
+	display: block;
+}
+.editLabel {
+	display: block;
+	margin-top: 10px;
+	color: #194cbf;
+	font-weight: bold;
+	font-family: 'PT Serif', serif;
+	margin-bottom: 10px;
+}
+.formInput {
+	border-bottom: 1px solid #c4c4c4;
+	text-align-last: left;
+	width: 180px;
+	display: inline-block;
+	height: unset;
+	font-size: 1.1em;
+	margin-left: 20px;
+}
+#noOfPassengersText {
+	color: #194cbf;
+	font-size: 1.1em;
+	font-family: 'PT Serif', serif;
+	letter-spacing: 1px;
+	font-weight: bolder;
+}
+#changePhotoContainer {
+	margin: 0 auto;
+	width: 80%;
+	height: 150px;
+	border: 1px dashed grey;
+}
+#editInput {
+	text-align: unset;
+}

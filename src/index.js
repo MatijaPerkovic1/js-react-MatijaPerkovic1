@@ -12,6 +12,9 @@ import { appState } from './state/AppState';
 import { bookFlight } from './services/book';
 import { CreateBooking } from './components/CreateBooking';
 import { loginUser } from './services/login';
+import { Profile } from './containers/Profile';
+import { EditProfile } from './components/EditProfile';
+import { editProfile } from './services/editProfile';
 
 function PrivateRoute({ isLoggedIn, Component, ...rest }) {
   function render(props) {
@@ -29,8 +32,12 @@ function onRegister(props, email, fullName, password){
 	props.history.push('/');
 }
 function onLogin(props, username, password) {
-	props.history.push('/');
 	loginUser(username, password);
+	props.history.push('/');
+}
+function editUserProfile(props, email, password, fullName, imageUrl) {
+	editProfile(appState.userId, email, fullName ,password, imageUrl);
+	props.history.push('/myprofile');
 }
 
 function App() {
@@ -40,6 +47,8 @@ function App() {
 		<Provider appState={appState}>
 			<Router>
 				<PrivateRoute isLoggedIn={LoggedIn} path={`/flights/:id`} Component={FlightDetails} />
+				<PrivateRoute isLoggedIn={LoggedIn} path={`/myprofile`} Component={Profile} />
+				<Route path="/myprofile/edit" render={(props) => <EditProfile {...props} editUserProfile={editUserProfile} />} />
 				<Route exact path="/" component={FlightsApp} />
 				<Route path="/login"  render={(props) => <Login {...props} onLogin={onLogin} />}/>
 				<Route path="/register" render={(props) => <Register {...props} onRegister={onRegister} />} />

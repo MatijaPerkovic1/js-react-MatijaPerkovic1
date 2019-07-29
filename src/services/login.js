@@ -11,6 +11,8 @@ export function loginUser(username, password) {
   	.then((response) => {
   		if(response.session) {
 			  localStorage.setItem('token', response.session.token);
+			  localStorage.setItem('userId', response.session.user.id);
+			  appState.userId = response.session.user.id;
 			  appState.token = response.session.token;
   		} else {
   			alert(JSON.stringify(response.errors))

@@ -6,35 +6,33 @@ import { FlightDetails } from '../containers/FlightDetails';
 import { observer } from 'mobx-react';
 
 function FlightComponent(props) {
-
-	const [bookedSeats, setBookedSeats] = useState(props.flight.no_of_booked_seats);
-	const [currentPrice, setCurrentPrice] = useState(props.flight.current_price);
-	function openFlightDetails() {
-		
-	}
+	
+	const flysAtDate = React.useMemo(() => 
+	{
+		let flysAtDate = new Date(props.flight.flys_at)
+		return `${flysAtDate.getHours()}:${flysAtDate.getMinutes()}`;
+	}, 
+	[]);
 
 	return(
 	<Link className={styles.linkStyle} to={`/flights/${props.flight.id}`} >
-		<div className={styles.item} onClick={openFlightDetails}>
+		<div className={styles.item}>
 			<img src="https://news.gtp.gr/wp-content/uploads/2019/04/Croatia-Airlines.jpg" />
 			<div id={styles.itemInfo}>
-			<p><b>Departs at {(() => {
-				let flysAtDate = new Date(props.flight.flys_at)
-
-				return `${flysAtDate.getHours()}:${flysAtDate.getMinutes()}`;
-			})()}</b></p>
+			<p><b>Departs at {flysAtDate}</b></p>
 			<p>{props.flight.name}</p>
 			<div>
 				<span className='fa fa-star checked'></span>
 				<span className='fa fa-star checked'></span>
 				<span className='fa fa-star checked'></span>
 			</div>
-			<pre id={styles.tickets}>|  {props.flight.no_of_seats- bookedSeats} tickets available</pre>
+			<pre id={styles.tickets}>|  {props.flight.no_of_seats - props.flight.no_of_booked_seats} tickets available</pre>
 			<pre>Price  <span id={styles.price}>{props.flight.current_price}$</span></pre>
 			</div>
 		</div>
 	</Link>
 	)
+	
 }
 
 export const Flight = observer(FlightComponent);
