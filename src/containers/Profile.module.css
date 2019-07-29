@@ -1,0 +1,52 @@
+#profilePage {
+	background-color: #d1d1d1;
+	position: absolute;
+	height: 100%;
+}
+#editProfile {
+	width: 60%;
+	margin-top: 20px;
+	margin-left: 10px;
+	height: 200px;
+	background-color: white;
+}
+.components{
+	width: 95%;
+	height: 250px;
+	margin: 40px auto;
+	background-color: white;
+}
+.componentList {
+	display: grid;
+	width: 100%;
+	grid-template-columns: repeat(4, 1fr);
+}
+.neutralHeading {
+	font-size: 1.5em;
+	padding: 10px;
+	margin-top: 100px;
+	margin-left: 10px;
+	font-family: sans-serif;
+	opacity: 0.8;
+}
+#userName {
+	color: #194cbf;
+	font-family: 'PT Serif', serif;
+	margin-bottom: 20px;
+}
+#editButton{
+	margin-top: 80px;
+	width: 150px;
+	height: 35px;
+	border-radius: 5px;
+	font-size: 1.1em;
+	background-color: #0369f9;
+	color: white;
+	border: none;
+}
+#profileImage {
+	float: left;
+	height: 180px;
+	margin: 10px;
+	width: 180px;
+}
