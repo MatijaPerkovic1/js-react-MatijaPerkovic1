@@ -3,11 +3,11 @@
 	height: 100%;
 	width: 100%;
 	text-align: center;
-	position: fixed;
+	position: absolute;
 	top: 0;
 }
 #editContent {
-	height: 700px;
+	height: 80%;
 	width: 600px;
 	background-color: white;
 	position: relative;

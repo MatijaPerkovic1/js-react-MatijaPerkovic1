@@ -2,11 +2,12 @@ import React from 'react';
 import { observer } from 'mobx-react';
 import styles from './EditProfile.module.css';
 import useForm from 'react-hook-form';
-import { useAsync } from 'react-use';
+import { AppContext } from '../state/AppContext';
 import { useDropzone } from 'react-dropzone';
 
 
 function EditProfileComponent(props) {
+	const { appState } = React.useContext(AppContext);
 
 	const { register, handleSubmit, errors } = useForm();
 	const [profilePicture, setProfilePicture] = React.useState();
@@ -16,7 +17,7 @@ function EditProfileComponent(props) {
 	    fetch('https://isa-js-upload.andreicek.dev/upload', {
 	      method: 'POST',
 	      headers: {
-	        Authorization: 'EToCrsBQA2fkGPi3E51mqLaD',
+	        Authorization: appState.token,
 	      },
 	      body,
 	    }).then((response) => response.json())

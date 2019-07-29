@@ -9,7 +9,7 @@ function FlightComponent(props) {
 	
 	const flysAtDate = React.useMemo(() => 
 	{
-		let flysAtDate = new Date(props.flight.flys_at)
+		const flysAtDate = new Date(props.flight.flys_at)
 		return `${flysAtDate.getHours()}:${flysAtDate.getMinutes()}`;
 	}, 
 	[]);

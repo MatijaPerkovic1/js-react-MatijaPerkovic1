@@ -6,7 +6,7 @@ function BookingComponent({booking}) {
 	
 	const flysAtDate = React.useMemo(() => 
 	{
-		let flysAtDate = new Date(booking.flys_at)
+		const flysAtDate = new Date(booking.flys_at)
 		return `${flysAtDate.getHours()}:${flysAtDate.getMinutes()}`;
 	}, 
 	[]);
