@@ -10,7 +10,7 @@ function FlightComponent(props) {
 	const flysAtDate = React.useMemo(() => 
 	{
 		const flysAtDate = new Date(props.flight.flys_at)
-		return `${flysAtDate.getHours()}:${flysAtDate.getMinutes()}`;
+		return `${("0" + flysAtDate.getHours()).slice(-2)}:${("0" + flysAtDate.getMinutes()).slice(-2)}`;
 	}, 
 	[]);
 
@@ -22,9 +22,9 @@ function FlightComponent(props) {
 			<p><b>Departs at {flysAtDate}</b></p>
 			<p>{props.flight.name}</p>
 			<div>
-				<span className='fa fa-star checked'></span>
-				<span className='fa fa-star checked'></span>
-				<span className='fa fa-star checked'></span>
+				<span className={`fa fa-star checked ${styles.starsRating}`}></span>
+				<span className={`fa fa-star checked ${styles.starsRating}`}></span>
+				<span className={`fa fa-star checked ${styles.starsRating}`}></span>
 			</div>
 			<pre id={styles.tickets}>|  {props.flight.no_of_seats - props.flight.no_of_booked_seats} tickets available</pre>
 			<pre>Price  <span id={styles.price}>{props.flight.current_price}$</span></pre>

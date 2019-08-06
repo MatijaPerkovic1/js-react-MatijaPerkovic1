@@ -1,6 +1,7 @@
 import React from 'react';
 import { registerUser } from '../services/register';
 import styles from './Forms.module.css';
+import globalStyles from './GlobalStyles.module.css';
 import { Redirect } from 'react-router-dom';
 import { observer } from 'mobx-react';
 import useForm from 'react-hook-form';
@@ -10,13 +11,14 @@ function RegisterComponent(props) {
 	const { register, handleSubmit, errors } = useForm();
 
 	function onRegisterClick(data) {
-		props.onRegister(props, data.email, data.fullName, data.password);
+		registerUser(data.email, data.fullName, data.password);
+		props.history.push('/');
 	}
 
 	return(
-		<div id={styles.formContainer}>
-			<form id={styles.form} onSubmit={handleSubmit(onRegisterClick)}>
-				<h2 className={styles.title}>Register</h2>
+		<div>
+			<form className={styles.form} onSubmit={handleSubmit(onRegisterClick)}>
+				<h2 className={globalStyles.blueHeading}>Register</h2>
 				<input 
 					className={styles.formInput} 
 					placeholder="Full name" 
@@ -39,7 +41,7 @@ function RegisterComponent(props) {
 					placeholder="Email" 
 					name="email"
 					ref={register} /><br />
-				<button id={styles.formButton} type="submit">
+				<button className={`${globalStyles.button} ${styles.formButton}`} type="submit">
 					Register
 				</button>
 			</form>

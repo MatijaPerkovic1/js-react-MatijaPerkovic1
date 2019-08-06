@@ -1,4 +1,4 @@
-import { get } from './flighterApiGet';
+import { get } from './flighterApi';
 export function getBookings(appState) {
   return get('bookings')
     .then((response) => response.bookings)

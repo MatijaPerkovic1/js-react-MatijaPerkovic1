@@ -1,4 +1,4 @@
-import { get } from './flighterApiGet';
+import { get } from './flighterApi';
 export function loadFlights(appState) {
   return get('flights')
     .then((response) => response.flights)

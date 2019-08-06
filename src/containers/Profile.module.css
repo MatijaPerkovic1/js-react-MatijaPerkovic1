@@ -2,47 +2,57 @@
 	background-color: #d1d1d1;
 	position: absolute;
 	height: 100%;
+	width: 100%;
+}
+#content {
+	width: 900px;
+	margin: 0 auto;
 }
 #editProfile {
-	width: 60%;
-	margin-top: 20px;
-	margin-left: 10px;
+	width: 500px;
+	border-radius: 5px;
+	box-shadow: 5px 5px grey;
+	margin: 20px 0px;
 	height: 200px;
 	background-color: white;
 }
+.arrowIcons {
+	font-size: 50px;
+	left: 30px;
+	opacity: 0.5;
+	top: 50px;
+	position: absolute;
+}
+.arrowIcons:hover {
+	opacity: 1;
+	cursor: pointer;
+}
+#rightArrow {
+	left: unset;
+	right: 30px;
+}
 .components{
-	width: 95%;
-	height: 250px;
+	width: 900px;
+	height: 280px;
 	margin: 40px auto;
 	background-color: white;
+	box-shadow: 5px 5px grey;
 }
 .componentList {
 	display: grid;
+	position: relative;
 	width: 100%;
 	grid-template-columns: repeat(4, 1fr);
 }
-.neutralHeading {
-	font-size: 1.5em;
-	padding: 10px;
+#componentsHeading {
 	margin-top: 100px;
 	margin-left: 10px;
-	font-family: sans-serif;
-	opacity: 0.8;
 }
 #userName {
-	color: #194cbf;
-	font-family: 'PT Serif', serif;
 	margin-bottom: 20px;
 }
 #editButton{
 	margin-top: 80px;
-	width: 150px;
-	height: 35px;
-	border-radius: 5px;
-	font-size: 1.1em;
-	background-color: #0369f9;
-	color: white;
-	border: none;
 }
 #profileImage {
 	float: left;

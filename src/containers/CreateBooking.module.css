@@ -15,21 +15,11 @@
 	margin-top: 25%;
 }
 #bookingTitle {
-	color: #194cbf;
-	font-family: 'PT Serif', serif;
-	letter-spacing: 2px;
 	margin-bottom: 40px;
 	padding-top: 40px;
 }
 #confirmButton {
-	width: 200px;
-	height: 35px;
 	margin: 0 auto;
-	border-radius: 5px;
-	font-size: 1.1em;
-	background-color: #0369f9;
-	color: white;
-	border: none;
 	display: block;
 }
 select {

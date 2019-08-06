@@ -1,7 +1,4 @@
-.title {
-	color: #194cbf;
-	font-family: 'PT Serif', serif;
-	letter-spacing: 2px;
+#title {
 	margin-bottom: 40px;
 }
 #info div p:nth-of-type(odd){
@@ -29,15 +26,8 @@
 	width: 50%;
 	display: inline-block;
 }
-#detailsButton {
+#bookButton {
 	margin-top: 80px;
-	width: 200px;
-	height: 35px;
-	border-radius: 5px;
-	font-size: 1.1em;
-	background-color: #0369f9;
-	color: white;
-	border: none;
 	display: block;
 }
 #amenities {

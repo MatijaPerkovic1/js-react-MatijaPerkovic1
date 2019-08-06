@@ -4,6 +4,7 @@ import { useAsync } from 'react-use';
 import { AppContext } from '../state/AppContext';
 import { Route } from 'react-router-dom';
 import styles from './FlightDetails.module.css';
+import globalStyles from './GlobalStyles.module.css';
 import { Navbar } from '../components/Navbar';
 import { observer } from 'mobx-react';
 
@@ -30,7 +31,7 @@ function FlightDetailsContainer(props) {
 			{loading ? <p>Loading...</p> : 
 			<React.Fragment>
 			<div id={styles.info}>
-				<h2 className={styles.title}>{flight && flight.name}</h2>
+				<h2 id={styles.title} className={globalStyles.blueHeading}>{flight && flight.name}</h2>
 				<div>
 					<p>Company:</p>
 					<p>{flight && flight.company_name}</p>
@@ -47,7 +48,7 @@ function FlightDetailsContainer(props) {
 					<p>Current price:</p>
 					<p>{flight && flight.current_price}$</p>
 				</div>
-				<button id={styles.detailsButton} onClick={createBooking}>
+				<button id={styles.bookButton} className={globalStyles.button} onClick={createBooking}>
 						Book now
 				</button>
 			</div>
