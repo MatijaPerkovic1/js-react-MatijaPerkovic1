@@ -4,13 +4,15 @@ import styles from './EditProfile.module.css';
 import useForm from 'react-hook-form';
 import { AppContext } from '../state/AppContext';
 import { useDropzone } from 'react-dropzone';
-
+import { editProfile } from '../services/editProfile';
 
 function EditProfileComponent(props) {
+
 	const { appState } = React.useContext(AppContext);
 
 	const { register, handleSubmit, errors } = useForm();
 	const [profilePicture, setProfilePicture] = React.useState();
+
 	function uploadPhoto(data) {
 	    const body = new FormData();
 	    body.append('image', profilePicture);
@@ -22,19 +24,26 @@ function EditProfileComponent(props) {
 	      body,
 	    }).then((response) => response.json())
 	      .then((res) => {
-	      	props.editUserProfile(props, data.email, data.newPassword, data.username, res.imageUrl);
+	      	editProfile(appState.userId, data.email, data.username , data.newPassword, res.imageUrl);
+			props.history.push('/myprofile');
 	      });
   	}
-
+  	function closeEdit(e){
+  		if(e.target.id == styles.editContainer){
+  			props.history.push('/myprofile');
+  		}
+  	}
 	function handleSaveChangesClick(data) {
 		uploadPhoto(data);
 	}
 	function onDrop(files) {
     	setProfilePicture(files[0]);
  	}
+
  	const { getRootProps, getInputProps, isDragActive } = useDropzone({onDrop});
+
 	return(
-		<div id={styles.editContainer}>
+		<div id={styles.editContainer} onClick={closeEdit}>
 			<form id={styles.editContent} onSubmit={handleSubmit(handleSaveChangesClick)}>
 				<h2 id={styles.editTitle}>Edit profile</h2>
 				<div {...getRootProps()} id={styles.changePhotoContainer}>
@@ -47,7 +56,8 @@ function EditProfileComponent(props) {
 						className={styles.formInput} 
 						placeholder="Username" 
 						name="username" 
-						ref={register} />
+						ref={register}
+						/>
 					<p className={styles.editLabel}>E-mail</p>
 					<input 
 						className={styles.formInput} 

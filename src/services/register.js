@@ -1,4 +1,4 @@
-import { post } from './fligherApiPost.js';
+import { post } from './flighterApi.js';
 
 export function registerUser(email, fullName, password) {
 

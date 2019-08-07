@@ -1,4 +1,4 @@
-import { post } from './fligherApiPost.js';
+import { post } from './flighterApi.js';
 import { appState } from '../state/AppState';
 export function loginUser(username, password) {
 	const body = JSON.stringify({
@@ -13,6 +13,7 @@ export function loginUser(username, password) {
 			  localStorage.setItem('token', response.session.token);
 			  localStorage.setItem('userId', response.session.user.id);
 			  appState.userId = response.session.user.id;
+			  appState.username =response.session.user.first_name;
 			  appState.token = response.session.token;
   		} else {
   			alert(JSON.stringify(response.errors))

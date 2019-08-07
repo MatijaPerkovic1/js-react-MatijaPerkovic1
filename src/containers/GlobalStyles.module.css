@@ -1,0 +1,24 @@
+p, pre, span, a {
+	font-family: sans-serif;
+}
+.button {
+	width: 200px;
+	height: 35px;
+	border-radius: 5px;
+	font-size: 1.1em;
+	background-color: #0369f9;
+	color: white;
+	border: none;
+}
+.blueHeading {
+	color: #194cbf;
+	font-family: 'PT Serif', serif;
+	letter-spacing: 2px;
+
+}
+.neutralHeading {
+	font-size: 1.5em;
+	padding: 10px;
+	font-family: sans-serif;
+	opacity: 0.8;
+}

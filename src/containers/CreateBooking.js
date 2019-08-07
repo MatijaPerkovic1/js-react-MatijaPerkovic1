@@ -1,7 +1,9 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import styles from './CreateBooking.module.css';
+import globalStyles from './GlobalStyles.module.css';
 import { Redirect } from 'react-router-dom';
+import { bookFlight } from '../services/book';
 
 function CreateBookingComponent(props) {
 
@@ -10,12 +12,18 @@ function CreateBookingComponent(props) {
 		setNoOfSeats(e.target.value);
 	}
 	function handleConfirmClick() {
-		props.createBooking(props, noOfSeats, props.match.params.id);
+		props.history.push('/');
+		bookFlight(noOfSeats, props.match.params.id);
 	}
+	function closeBooking(e){
+  		if(e.target.id == styles.bookingContainer){
+  			props.history.push('/flights/' + props.match.params.id);
+  		}
+  	}
 	return(
-		<div id={styles.bookingContainer}>
+		<div id={styles.bookingContainer} onClick={closeBooking}>
 			<div id={styles.bookingContent}>
-				<h2 id={styles.bookingTitle}>Create booking</h2>
+				<h2 id={styles.bookingTitle} className={globalStyles.blueHeading}>Create booking</h2>
 				<p id={styles.noOfPassengersText}>Number of passengers</p>
 				<select onChange={handleSelectChange}>
 					<option value={1}>1</option>
@@ -23,7 +31,7 @@ function CreateBookingComponent(props) {
 					<option value={3}>3</option>
 					<option value={4}>4</option>
 				</select><br />
-				<button id={styles.confirmButton} onClick={handleConfirmClick}>
+				<button id={styles.confirmButton} class={globalStyles.button} onClick={handleConfirmClick}>
 					Confirm booking
 				</button>
 			</div>

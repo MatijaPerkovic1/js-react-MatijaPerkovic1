@@ -11,7 +11,7 @@ function NavbarComponent(props){
 	}
 	return (
 		<div id={styles.navbar}>
-			<div id={styles.buttons}>
+			<div id={styles.navbarButtons}>
 			{ !appState.isLoggedIn && <Link to="/login"><button>Login</button></Link>}
 			{ !appState.isLoggedIn && <Link to="/register"><button>Register</button></Link>}
 			{ appState.isLoggedIn && <button onClick={handleLogOutClick}>Log out</button>}

@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Forms.module.css';
+import globalStyles from './GlobalStyles.module.css';
 import { Link, Redirect } from 'react-router-dom';
 import { observer } from 'mobx-react';
 import { loginUser } from '../services/login';
@@ -8,13 +9,15 @@ import useForm from 'react-hook-form';
 
 function LoginComponent(props) {
 	const { register, handleSubmit, errors} = useForm();
+
 	function handleLoginClick(data) {
-		props.onLogin(props, data.username, data.password);
+		loginUser(data.username, data.password);
+		props.history.push('/');
 	}
 	return(
-		<div id={styles.formContainer}>
-			<form id={styles.form} onSubmit={handleSubmit(handleLoginClick)}>
-				<h2 className={styles.title}>Login</h2>
+		<div>
+			<form className={styles.form} onSubmit={handleSubmit(handleLoginClick)}>
+				<h2 className={globalStyles.blueHeading}>Login</h2>
 				<input 
 					className={styles.formInput} 
 					placeholder="Username" 
@@ -27,7 +30,7 @@ function LoginComponent(props) {
 					name="password"
 					ref={register} /><br />
 				<input type="checkbox" /><span>Remember me</span><br />
-				<button id={styles.formButton}>
+				<button className={`${globalStyles.button} ${styles.formButton}`}>
 					Login
 				</button>
 				<p>Don't have an account?</p>

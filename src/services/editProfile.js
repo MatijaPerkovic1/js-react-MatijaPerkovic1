@@ -1,4 +1,4 @@
-import { put } from './fligherApiPost.js';
+import { put } from './flighterApi.js';
 import { appState } from '../state/AppState';
 
 export function editProfile(userId, email, fullName, password, imageUrl) {

@@ -6,10 +6,21 @@ class AppState {
   username = "";
   userId = localStorage.getItem('userId');
   flightsFilter = localStorage.getItem('flightsFilter') || '';
+  numberOfPassengers = 0;
+  flightDate = null;
   get filteredFlights() {
     return this.flights.filter((flight) =>
-      flight.name.toLowerCase().includes(this.flightsFilter.toLowerCase()),
-    );
+      flight.name.toLowerCase().includes(this.flightsFilter.toLowerCase())
+    ).filter((flight) => 
+        (flight.no_of_seats - flight.no_of_booked_seats) >= this.numberOfPassengers
+    ).filter((flight) => {
+        if(this.flightDate) {
+          return this.flightDate == flight.flys_at.split('T')[0]
+        } else {
+          return flight
+        }
+    }
+    )
   };
   token = localStorage.getItem('token') || '';
   get isLoggedIn() {
@@ -18,6 +29,8 @@ class AppState {
 }
 decorate(AppState, {
   bookings: observable,
+  flightDate: observable,
+  numberOfPassengers: observable,
   username: observable,
   flights: observable,
   userId: observable,

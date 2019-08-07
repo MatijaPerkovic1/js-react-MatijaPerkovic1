@@ -2,9 +2,12 @@
 	margin: 0;
 }
 .wrapper {
+	width: 1400px;
+	margin: 0 auto;
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	grid-row-gap: 20px;
+	text-align: center;
 	padding: 20px;
 }
 #navbar {
@@ -12,11 +15,14 @@
 	height: 80px;
 	background-color: #0369f9;
 }
-#buttons {
+.starsRating {
+	color: #fcba03;
+}
+#navbarButtons {
 	float: right;
 	padding: 20px;
 }
-#buttons button {
+#navbarButtons button {
 	margin: 5px;
 	padding: 3px;
 	width: 80px;
@@ -29,11 +35,6 @@
 	background-color: #f0f0f0;
 	position: relative;
 	text-align: center;
-}
-.title {
-	color: #194cbf;
-	font-family: 'PT Serif', serif;
-	letter-spacing: 2px;
 }
 #search h2 {
 	position: relative;
@@ -66,13 +67,15 @@
 	height: 70px;
 	margin-top: 50px;
 	margin-left: 10px;
-	font-size: 1.5em;
-	font-family: sans-serif;
-	opacity: 0.8;
 }
 .item img {
-	width: 80%;
-	height: 300px;
+	width: 430px;
+	height: 330px;
+}
+#itemInfo {
+	width: 450px;
+	margin: auto;
+	text-align: left;
 }
 #itemInfo > * {
 	padding: 10px;
@@ -89,9 +92,6 @@
 	color: #0369f9;
 	font-weight: 900;
 }
-p, pre, span, a {
-	font-family: sans-serif;
-}
 
 #main {
 	position: relative;
@@ -103,4 +103,16 @@ p, pre, span, a {
 .linkStyle {
 	text-decoration: none;
 	color: unset;
+}
+@media only screen and (max-width: 1439px) {
+  .wrapper {
+  	width: 1024px;
+  }
+  .item img {
+	width: 280px;
+	height: 220px;
+  }
+  #itemInfo {
+	width: 280px;
+  }
 }
