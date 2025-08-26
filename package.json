@@ -9,7 +9,7 @@
     "react-dropzone": "^10.1.6",
     "react-hook-form": "^3.20.0",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1",
+    "react-scripts": "5.0.1",
     "react-use": "^9.8.1",
     "rebound": "^0.1.0"
   },
